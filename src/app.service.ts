@@ -14,6 +14,7 @@ export class AppService {
     const { data, extension, fileName, folder } = payload;
 
     const document = await this.printerService.createPdf({
+      pageMargins: [10, 10, 10, 10],
       content: [headerSection(data)],
     });
 

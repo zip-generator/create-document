@@ -68,13 +68,13 @@ const headerSection = (options: HeaderSectionOptions) => {
             ],
           },
         ],
-        width: '50%',
+        width: '45%',
       },
       {
-        width: '50%',
+        width: '55%',
         table: {
           headerRows: 1,
-          widths: ['*'],
+          widths: ['100%', '100%'],
           body: [
             [
               {
