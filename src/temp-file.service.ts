@@ -20,12 +20,11 @@ export class TempFileService {
   }: ISaveBufferToFile): Promise<string> {
     const dirPath = join(process.cwd(), 'temp-data', folder);
     this.#logger.debug('saving file', {
-      dirPath,
+      dirPath: join(dirPath, `${fileName}.${extension}`),
     });
     await this.createDirectoryIfNotExists(dirPath);
 
     try {
-      document.info.Title = fileName;
       document.pipe(
         fs.createWriteStream(join(dirPath, `${fileName}.${extension}`)),
       );
