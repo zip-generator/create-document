@@ -6,8 +6,7 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 
-RUN npm install -g pnpm && pnpm install && \
-  pnpm prisma:generate --schema prisma/schema.prisma 
+RUN npm install -g pnpm && pnpm install 
 
 COPY . .
 
