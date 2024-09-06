@@ -16,7 +16,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
   return {
     margin: [0, 5],
     stack: [
-      { text: 'Información de Receptor', margin: [10, 6] },
+      { text: 'Información de Receptor', margin: [10, 5] },
       {
         canvas: [
           {
@@ -29,7 +29,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             lineColor: 'gray', // Color de la línea
           },
         ],
-        margin: [10, 10],
+        margin: [5, 5],
       },
       {
         columns: [

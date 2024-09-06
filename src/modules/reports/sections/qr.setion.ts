@@ -15,19 +15,19 @@ export const qrSection = ({
     columns: [
       {
         alignment: 'right',
-        margin: [10, 5],
+        margin: [10, 10],
         stack: [
           { text: 'MH Portal', alignment: 'center', margin: [0, 0, 0, 5] },
           {
             qr: mhPortal ?? 'Problemas con el código QR',
-            fit: 70,
+            fit: 75,
             alignment: 'center',
           },
         ],
       },
       {
         alignment: 'right',
-        margin: [10, 5],
+        margin: [10, 10],
         stack: [
           {
             text: 'Código de Generación',
@@ -68,7 +68,7 @@ export const qrSection = ({
           },
           {
             qr: receptionStamp ?? 'Problemas con el código QR',
-            fit: 80,
+            fit: 70,
             alignment: 'center',
           },
         ],
