@@ -1,22 +1,77 @@
 import { Type } from 'class-transformer';
-import { IsString, ValidateNested } from 'class-validator';
+import { IsString, ValidateNested, IsNotEmpty } from 'class-validator';
 
-class DataDto {
+export class DirectioDto {
   @IsString()
-  controlNumber: string;
+  city: string;
   @IsString()
-  emitionDate: string;
+  complement: string;
   @IsString()
-  emitionTime: string;
-  @IsString()
-  generationCode: string;
-  @IsString()
-  receptionStamp: string;
+  department: string;
 }
+export class ReceptorContentDTO {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  document: string;
+
+  @IsString()
+  @IsNotEmpty()
+  econimicActivity: string;
+
+  @ValidateNested()
+  @Type(() => DirectioDto)
+  direction: DirectioDto;
+
+  @IsString()
+  @IsNotEmpty()
+  nrc: string;
+
+  @IsString()
+  @IsNotEmpty()
+  phone: string;
+}
+
+export class HeaderSectionOptionsDTO {
+  @IsString()
+  @IsNotEmpty()
+  generationCode: string;
+
+  @IsString()
+  @IsNotEmpty()
+  receptionStamp: string;
+
+  @IsString()
+  @IsNotEmpty()
+  controlNumber: string;
+
+  @IsString()
+  @IsNotEmpty()
+  emitionDate: string;
+
+  @IsString()
+  @IsNotEmpty()
+  emitionTime: string;
+
+  @IsString()
+  url: string;
+}
+
+export class DocumentDataDTO {
+  @IsNotEmpty()
+  receptor: ReceptorContentDTO;
+
+  @IsNotEmpty()
+  header: HeaderSectionOptionsDTO;
+}
+
 export class PayloadDto {
   @ValidateNested()
-  @Type(() => DataDto)
-  data: DataDto;
+  @Type(() => DocumentDataDTO)
+  data: DocumentDataDTO;
 
   @IsString()
   fileName: string;

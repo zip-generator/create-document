@@ -1,38 +1,10 @@
-import { join } from 'path';
-import { readFileSync } from 'fs';
 import { ContentColumns } from 'pdfmake/interfaces';
-
-interface HeaderSectionOptions {
-  generationCode: string;
-  receptionStamp: string;
-  controlNumber: string;
-  emitionDate: string;
-  emitionTime: string;
-}
-
-/**
- * Convierte una imagen a Base64.
- * @param relativePath - Ruta relativa a la imagen desde el directorio actual.
- * @returns {string} - La cadena en Base64 de la imagen.
- */
-function convertImageToBase64(relativePath: string): string {
-  try {
-    // Construye la ruta absoluta a la imagen
-    const imagePath = join(process.cwd(), relativePath);
-
-    // Lee el archivo de la imagen y conviértelo a Base64
-    const imageBase64 = readFileSync(imagePath, { encoding: 'base64' });
-
-    // Retorna la cadena base64 junto con el tipo de imagen
-    return `data:image/png;base64,${imageBase64}`;
-  } catch (error) {
-    console.error('Error al convertir la imagen a Base64:', error);
-    throw new Error('No se pudo convertir la imagen a Base64');
-  }
-}
+import { HeaderSectionOptionsDTO } from '@app/dto';
 
 // Ejemplo de uso
-const headerSection = (options: HeaderSectionOptions): ContentColumns => {
+const headerSection = (
+  options: Omit<HeaderSectionOptionsDTO, 'url'>,
+): ContentColumns => {
   const {
     controlNumber,
     emitionDate,
@@ -42,7 +14,6 @@ const headerSection = (options: HeaderSectionOptions): ContentColumns => {
   } = options;
 
   const headerContent: ContentColumns = {
-    margin: [10, 10],
     columns: [
       {
         text: [

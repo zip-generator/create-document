@@ -28,7 +28,6 @@ export class TempFileService {
       document.pipe(
         fs.createWriteStream(join(dirPath, `${fileName}.${extension}`)),
       );
-
       document.end();
       return join(dirPath, `${fileName}.${extension}`);
     } catch (err) {
