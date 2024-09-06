@@ -1,4 +1,6 @@
-import { Content } from 'pdfmake/interfaces';
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import { ContentColumns } from 'pdfmake/interfaces';
 
 interface HeaderSectionOptions {
   generationCode: string;
@@ -7,7 +9,30 @@ interface HeaderSectionOptions {
   emitionDate: string;
   emitionTime: string;
 }
-const headerSection = (options: HeaderSectionOptions) => {
+
+/**
+ * Convierte una imagen a Base64.
+ * @param relativePath - Ruta relativa a la imagen desde el directorio actual.
+ * @returns {string} - La cadena en Base64 de la imagen.
+ */
+function convertImageToBase64(relativePath: string): string {
+  try {
+    // Construye la ruta absoluta a la imagen
+    const imagePath = join(process.cwd(), relativePath);
+
+    // Lee el archivo de la imagen y conviértelo a Base64
+    const imageBase64 = readFileSync(imagePath, { encoding: 'base64' });
+
+    // Retorna la cadena base64 junto con el tipo de imagen
+    return `data:image/png;base64,${imageBase64}`;
+  } catch (error) {
+    console.error('Error al convertir la imagen a Base64:', error);
+    throw new Error('No se pudo convertir la imagen a Base64');
+  }
+}
+
+// Ejemplo de uso
+const headerSection = (options: HeaderSectionOptions): ContentColumns => {
   const {
     controlNumber,
     emitionDate,
@@ -16,7 +41,8 @@ const headerSection = (options: HeaderSectionOptions) => {
     receptionStamp,
   } = options;
 
-  const headerContent: Content = {
+  const headerContent: ContentColumns = {
+    margin: [10, 10],
     columns: [
       {
         text: [
@@ -69,12 +95,13 @@ const headerSection = (options: HeaderSectionOptions) => {
           },
         ],
         width: '45%',
+        marginRight: 5,
       },
       {
         width: '55%',
         table: {
           headerRows: 1,
-          widths: ['100%', '100%'],
+          widths: ['100%'],
           body: [
             [
               {
@@ -95,29 +122,22 @@ const headerSection = (options: HeaderSectionOptions) => {
             [
               {
                 text: [
+                  { text: 'Codigo Generación: ', style: 'smallBold' },
                   {
-                    text: [
-                      { text: 'Codigo Generación: ', style: 'smallBold' },
-                      {
-                        text: `${generationCode} \n\n`,
-                        style: 'small',
-                      },
-                    ],
+                    text: `${generationCode}`,
+                    style: 'small',
                   },
+                ],
+              },
+            ],
+            [
+              {
+                text: [
                   {
                     text: [
                       { text: 'Sello Recepción: ', style: 'smallBold' },
                       {
-                        text: `${receptionStamp} \n\n`,
-                        style: 'small',
-                      },
-                    ],
-                  },
-                  {
-                    text: [
-                      { text: 'Número de control: ', style: 'smallBold' },
-                      {
-                        text: `${controlNumber}`,
+                        text: `${receptionStamp}`,
                         style: 'small',
                       },
                     ],
@@ -127,39 +147,42 @@ const headerSection = (options: HeaderSectionOptions) => {
             ],
             [
               {
+                text: [
+                  { text: 'Número de control: ', style: 'smallBold' },
+                  {
+                    text: `${controlNumber}`,
+                    style: 'small',
+                  },
+                ],
+              },
+            ],
+            [
+              {
                 columns: [
                   {
+                    alignment: 'left',
                     text: [
                       {
                         text: [
                           {
                             text: 'Modélo facturación: ',
                             style: 'smallBold',
-                            width: 'auto',
                           },
-                          {
-                            width: '*',
-                            text: 'Previo',
-                            style: 'small',
-                          },
+                          { text: 'Previo', style: 'small' },
                         ],
                       },
                     ],
                   },
                   {
+                    alignment: 'right',
                     text: [
                       {
                         text: [
                           {
                             text: 'Versión del Json: ',
                             style: 'smallBold',
-                            width: 'auto',
                           },
-                          {
-                            width: '*',
-                            text: '1',
-                            style: 'small',
-                          },
+                          { text: '1', style: 'small' },
                         ],
                       },
                     ],
@@ -171,40 +194,32 @@ const headerSection = (options: HeaderSectionOptions) => {
               {
                 columns: [
                   {
+                    alignment: 'left',
                     text: [
                       {
                         text: [
                           {
                             text: 'Tipo de transmisión: ',
                             style: 'smallBold',
-                            width: 'auto',
                           },
-                          {
-                            width: '*',
-                            text: 'Normal',
-                            style: 'small',
-                          },
+                          { text: 'Normal', style: 'small' },
                         ],
                       },
                     ],
+                    width: '50%',
                   },
                   {
+                    alignment: 'right',
                     text: [
                       {
                         text: [
-                          {
-                            text: 'Fecha emisión: ',
-                            style: 'smallBold',
-                            width: 'auto',
-                          },
-                          {
-                            width: '*',
-                            text: `${emitionDate}`,
-                            style: 'small',
-                          },
+                          { text: 'Fecha emisión: ', style: 'smallBold' },
+                          { text: `${emitionDate}`, style: 'small' },
                         ],
                       },
                     ],
+                    align: 'end',
+                    width: '50%',
                   },
                 ],
               },
@@ -213,37 +228,26 @@ const headerSection = (options: HeaderSectionOptions) => {
               {
                 columns: [
                   {
+                    alignment: 'left',
                     text: [
                       {
                         text: [
-                          {
-                            text: 'Hora de emisión: ',
-                            style: 'smallBold',
-                            width: 'auto',
-                          },
-                          {
-                            width: '*',
-                            text: `${emitionTime}`,
-                            style: 'small',
-                          },
+                          { text: 'Hora de emisión: ', style: 'smallBold' },
+                          { text: `${emitionTime}`, style: 'small' },
                         ],
                       },
                     ],
                   },
                   {
+                    alignment: 'right',
                     text: [
                       {
                         text: [
                           {
                             text: 'Transacción contable: ',
                             style: 'smallBold',
-                            width: 'auto',
                           },
-                          {
-                            width: '*',
-                            text: '89859',
-                            style: 'small',
-                          },
+                          { text: '89859', style: 'small' },
                         ],
                       },
                     ],
@@ -256,6 +260,7 @@ const headerSection = (options: HeaderSectionOptions) => {
       },
     ],
   };
+
   return headerContent;
 };
 

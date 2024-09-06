@@ -13,9 +13,28 @@ export class AppService {
   async generateDocument(payload: PayloadDto): Promise<string> {
     const { data, extension, fileName, folder } = payload;
 
-    const document = await this.printerService.createPdf({
-      pageMargins: [10, 10, 10, 10],
-      content: [headerSection(data)],
+    const document = this.printerService.createPdf({
+      pageSize: 'LETTER',
+      pageMargins: [10, 300],
+      header: headerSection(data),
+      content: [{ text: 'Hello World' }],
+      styles: {
+        header: {
+          fontSize: 10,
+          bold: true,
+        },
+        subHeader: {
+          fontSize: 9,
+          bold: true,
+        },
+        small: {
+          fontSize: 8,
+        },
+        smallBold: {
+          fontSize: 8,
+          bold: true,
+        },
+      },
     });
 
     return await this.tempFileService.saveBufferToFile({
