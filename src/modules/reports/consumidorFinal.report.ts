@@ -1,8 +1,11 @@
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
-import { headerSection } from './sections';
+import {
+  headerSection,
+  qrSection,
+  receptorSection,
+  tableSection,
+} from './sections';
 import { styles } from './styles';
-import { qrSection } from './sections/qr.setion';
-import { receptorSection } from './sections/receptor.section';
 import { DocumentDataDTO } from '@app/dto';
 
 // const logo: Content = {
@@ -26,6 +29,7 @@ export const consumidorFinalReport = (
         mhPortal: url,
       }),
       receptorSection(receptor),
+      tableSection(),
     ],
     styles,
   };

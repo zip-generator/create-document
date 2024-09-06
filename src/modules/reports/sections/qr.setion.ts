@@ -15,19 +15,19 @@ export const qrSection = ({
     columns: [
       {
         alignment: 'right',
-        margin: [10, 20],
+        margin: [10, 5],
         stack: [
           { text: 'MH Portal', alignment: 'center', margin: [0, 0, 0, 5] },
           {
             qr: mhPortal ?? 'Problemas con el código QR',
-            fit: 110,
+            fit: 70,
             alignment: 'center',
           },
         ],
       },
       {
         alignment: 'right',
-        margin: [10, 20],
+        margin: [10, 5],
         stack: [
           {
             text: 'Código de Generación',
@@ -36,14 +36,14 @@ export const qrSection = ({
           },
           {
             qr: generationCode ?? 'Problemas con el código QR',
-            fit: 80,
+            fit: 70,
             alignment: 'center',
           },
         ],
       },
       {
         alignment: 'right',
-        margin: [10, 20],
+        margin: [10, 10],
         stack: [
           {
             text: 'Número de Control',
@@ -52,14 +52,14 @@ export const qrSection = ({
           },
           {
             qr: controlNumber ?? 'Problemas con el código QR',
-            fit: 80,
+            fit: 70,
             alignment: 'center',
           },
         ],
       },
       {
         alignment: 'right',
-        margin: [10, 20],
+        margin: [10, 10],
         stack: [
           {
             text: 'Sello de Recepción',

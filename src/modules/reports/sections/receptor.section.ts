@@ -14,10 +14,9 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
     atencionId,
   } = data;
   return {
-    margin: [0, 20],
-
+    margin: [0, 5],
     stack: [
-      { text: 'Información de Receptor', margin: [10, 10] },
+      { text: 'Información de Receptor', margin: [10, 6] },
       {
         canvas: [
           {
@@ -33,7 +32,6 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
         margin: [10, 10],
       },
       {
-        margin: [10, 10],
         columns: [
           {
             stack: [
@@ -77,7 +75,6 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
         ],
       },
       {
-        margin: [10, 10],
         columns: [
           {
             stack: [
@@ -121,7 +118,6 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
         ],
       },
       {
-        margin: [10, 10],
         columns: [
           {
             stack: [
