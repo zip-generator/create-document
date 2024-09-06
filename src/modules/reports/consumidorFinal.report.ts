@@ -7,9 +7,11 @@ import {
 } from './sections';
 import { styles } from './styles';
 import { DocumentDataDTO } from '@app/dto';
+import * as fs from 'fs';
+import { generateDataImage } from '@app/utils';
 
 const logo: Content = {
-  image: 'src/public/images/logo.jpg',
+  image: generateDataImage('src/public/images/logo.jpg'),
   width: 100,
   height: 50,
   margin: [10, 5],
@@ -21,7 +23,7 @@ export const consumidorFinalReport = (
   const { url, ...rest } = header;
   return {
     header: logo,
-    pageMargins: [10, 100],
+    pageMargins: [10, 70],
     content: [
       headerSection(rest),
       qrSection({
