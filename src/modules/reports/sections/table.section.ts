@@ -1,22 +1,10 @@
 import { ContentTable } from 'pdfmake/interfaces';
-
+const ccfData = Array(10).fill(1);
 export const tableSection = (): ContentTable => {
   return {
     table: {
       headerRows: 1,
-      widths: [
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-        'auto',
-      ], // 11 columnas
+      widths: Array(11).fill('auto'), // 11 columnas
       body: [
         [
           {
@@ -50,19 +38,7 @@ export const tableSection = (): ContentTable => {
           { text: 'V. Excenta', style: 'subHeader' },
           { text: 'V. Gravada', style: 'subHeader' },
         ],
-        [
-          { text: '1', style: 'small' },
-          { text: '01', style: 'small' },
-          { text: '3', style: 'small' },
-          { text: '001', style: 'small' },
-          { text: '100', style: 'small' },
-          { text: 'COAS', style: 'small' },
-          { text: '$1.50', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-        ],
+        ...mapCCF(ccfData),
         [
           {
             text: [
@@ -341,4 +317,22 @@ export const tableSection = (): ContentTable => {
       ],
     },
   };
+};
+
+const mapCCF = (ccf: unknown[]): any[][] => {
+  return ccf.map(() => {
+    return [
+      { text: '1', style: 'small' },
+      { text: '01', style: 'small' },
+      { text: '3', style: 'small' },
+      { text: '001', style: 'small' },
+      { text: '100', style: 'small' },
+      { text: 'COAS', style: 'small' },
+      { text: '$1.50', style: 'small' },
+      { text: '$0.00', style: 'small' },
+      { text: '$0.00', style: 'small' },
+      { text: '$0.00', style: 'small' },
+      { text: '$0.00', style: 'small' },
+    ];
+  });
 };

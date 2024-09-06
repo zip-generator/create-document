@@ -7,7 +7,6 @@ import {
 } from './sections';
 import { styles } from './styles';
 import { DocumentDataDTO } from '@app/dto';
-import * as fs from 'fs';
 import { generateDataImage } from '@app/utils';
 
 const logo: Content = {
