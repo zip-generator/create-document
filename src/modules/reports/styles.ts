@@ -2,18 +2,18 @@ import { StyleDictionary } from 'pdfmake/interfaces';
 
 export const styles: StyleDictionary = {
   header: {
-    fontSize: 10,
+    fontSize: 12,
     bold: true,
   },
   subHeader: {
-    fontSize: 9,
+    fontSize: 10,
     bold: true,
   },
   small: {
-    fontSize: 8,
+    fontSize: 9,
   },
   smallBold: {
-    fontSize: 8,
+    fontSize: 9,
     bold: true,
   },
 };

@@ -1,5 +1,10 @@
 import { Type } from 'class-transformer';
-import { IsString, ValidateNested, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  ValidateNested,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 export class DirectioDto {
   @IsString()
@@ -33,6 +38,19 @@ export class ReceptorContentDTO {
   @IsString()
   @IsNotEmpty()
   phone: string;
+
+  @IsOptional()
+  doctor: string;
+  // @IsOptional()
+  // deducible: string;
+  // @IsOptional()
+  // copaago: string;
+  // @IsOptional()
+  // coaseguroPersentage: string;
+  @IsOptional()
+  atencionId: string;
+  @IsOptional()
+  insuranceCompany: string;
 }
 
 export class HeaderSectionOptionsDTO {

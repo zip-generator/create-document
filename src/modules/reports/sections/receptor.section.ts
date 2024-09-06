@@ -1,17 +1,46 @@
-import { ContentStack } from 'pdfmake/interfaces';
 import { ReceptorContentDTO } from '@app/dto';
+import { ContentStack } from 'pdfmake/interfaces';
 
 export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
-  const { direction, document, econimicActivity, name, nrc, phone } = data;
+  const {
+    direction,
+    document,
+    econimicActivity,
+    name,
+    nrc,
+    phone,
+    insuranceCompany,
+    doctor,
+    atencionId,
+  } = data;
   return {
+    margin: [0, 20],
+
     stack: [
+      { text: 'Información de Receptor', margin: [10, 10] },
       {
+        canvas: [
+          {
+            type: 'line',
+            x1: 0,
+            y1: 0,
+            x2: 550,
+            y2: 0,
+            lineWidth: 1, // Grosor de la línea
+            lineColor: 'gray', // Color de la línea
+          },
+        ],
+        margin: [10, 10],
+      },
+      {
+        margin: [10, 10],
         columns: [
           {
             stack: [
               {
                 text: 'Nombre o Razón Social:',
-                style: 'smallBold',
+                style: 'subHeader',
+                bold: true,
               },
               {
                 text: name,
@@ -23,7 +52,8 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             stack: [
               {
                 text: 'Documento:',
-                style: 'smallBold',
+                style: 'subHeader',
+                bold: true,
               },
               {
                 text: document,
@@ -35,7 +65,8 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             stack: [
               {
                 text: 'Actividad Economica:',
-                style: 'smallBold',
+                style: 'subHeader',
+                bold: true,
               },
               {
                 text: econimicActivity,
@@ -46,15 +77,17 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
         ],
       },
       {
+        margin: [10, 10],
         columns: [
           {
             stack: [
               {
                 text: 'Direccion:',
-                style: 'smallBold',
+                style: 'subHeader',
+                bold: true,
               },
               {
-                text: `${direction.city}, ${direction.complement}, ${direction.department}`,
+                text: direction.complement,
                 style: 'small',
               },
             ],
@@ -63,7 +96,8 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             stack: [
               {
                 text: 'NRC:',
-                style: 'smallBold',
+                style: 'subHeader',
+                bold: true,
               },
               {
                 text: nrc,
@@ -74,11 +108,56 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
           {
             stack: [
               {
-                text: 'Telefono:',
-                style: 'smallBold',
+                text: 'Télefono:',
+                style: 'subHeader',
+                bold: true,
               },
               {
                 text: phone,
+                style: 'small',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        margin: [10, 10],
+        columns: [
+          {
+            stack: [
+              {
+                text: 'Aseguradora:',
+                style: 'subHeader',
+                bold: true,
+              },
+              {
+                text: insuranceCompany ?? 'N/A ',
+                style: 'small',
+              },
+            ],
+          },
+          {
+            stack: [
+              {
+                text: 'Médico:',
+                style: 'subHeader',
+                bold: true,
+              },
+              {
+                text: doctor ?? 'N/A ',
+                style: 'small',
+              },
+            ],
+          },
+          {
+            stack: [
+              {
+                text: 'Atención:',
+                style: 'subHeader',
+                bold: true,
+              },
+              {
+                text: atencionId ?? 'N/A',
                 style: 'small',
               },
             ],
