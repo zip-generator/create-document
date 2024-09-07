@@ -97,7 +97,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
                 bold: true,
               },
               {
-                text: nrc,
+                text: nrc ?? 'N/A',
                 style: 'small',
               },
             ],

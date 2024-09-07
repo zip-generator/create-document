@@ -81,8 +81,13 @@ export class Resume {
   subTotal: string;
   reteRenta: string;
   totalDescu: string;
-  totalpagar: string;
+  totalPagar: string;
   totalCompra: string;
+  totalLetras: string;
+  totalExcenta: string;
+  totalGravada: string;
+  totalIva: string;
+  montoTotalOperacion: string;
 }
 export class BodyDto {
   numItem: string;

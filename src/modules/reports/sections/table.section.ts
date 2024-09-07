@@ -1,7 +1,7 @@
-import { BodyDto } from '@app/dto';
+import { BodyDto, Resume } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 
-export const tableSection = (body: BodyDto[]): ContentTable => {
+export const tableSection = (body: BodyDto[], resume: Resume): ContentTable => {
   return {
     table: {
       headerRows: 1,
@@ -48,7 +48,7 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
                 style: 'smallBold',
               },
               {
-                text: 'CIEN DOLARES \n',
+                text: `${resume.totalLetras}`,
                 style: 'small',
               },
             ],
@@ -60,10 +60,10 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
           { text: '', style: 'small' },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
+          { text: 'Total Operaciones:', style: 'small' },
+          { text: 'No Sujetas', style: 'small' },
+          { text: 'Excentas', style: 'small' },
+          { text: 'Gravadas', style: 'small' },
         ],
         [
           {
@@ -80,8 +80,8 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
           { text: '', style: 'small' },
           { text: '$0.00', style: 'small' },
           { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
+          { text: resume.totalExcenta, style: 'small' },
+          { text: resume.totalGravada, style: 'small' },
         ],
         [
           {
@@ -177,10 +177,29 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
           { text: '', style: 'small' },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
+          {
+            colSpan: 3,
+            stack: [
+              { text: 'Total descuentos', style: 'small' },
+              {
+                text: 'Suma de operaciones sin impuesto',
+                style: 'small',
+              },
+              {
+                text: 'Impuesto al Valor Agregado 13%',
+                style: 'small',
+              },
+            ],
+          },
+          { text: '', style: 'small' },
+          { text: '', style: 'small' },
+          {
+            stack: [
+              { text: resume.totalDescu, style: 'small' },
+              { text: resume.subTotal, style: 'small' },
+              { text: resume.totalIva, style: 'small' },
+            ],
+          },
         ],
         [
           {
@@ -195,9 +214,13 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
           { text: '', style: 'small' },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
+          {
+            text: 'IVA percibido',
+            colSpan: 3,
+            style: 'small',
+          },
+          { text: '', style: 'small' },
+          { text: '', style: 'small' },
           { text: '$0.00', style: 'small' },
         ],
         [
@@ -292,10 +315,29 @@ export const tableSection = (body: BodyDto[]): ContentTable => {
           { text: '', style: 'small' },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
-          { text: '$0.00', style: 'small' },
+          {
+            colSpan: 2,
+            stack: [
+              { text: 'Monto total de la operación', style: 'small' },
+              {
+                text: 'Total otros montos no afectos',
+                style: 'small',
+              },
+              {
+                text: 'Total A Pagar',
+                style: 'small',
+              },
+            ],
+          },
+          { text: '', style: 'small' },
+          { text: '', style: 'small' },
+          {
+            stack: [
+              { text: resume.montoTotalOperacion, style: 'small' },
+              { text: '$0.00', style: 'small' },
+              { text: resume.totalPagar, style: 'small' },
+            ],
+          },
         ],
         [
           {
