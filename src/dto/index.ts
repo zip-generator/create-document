@@ -77,6 +77,26 @@ export class HeaderSectionOptionsDTO {
   @IsString()
   url: string;
 }
+export class Resume {
+  subTotal: string;
+  reteRenta: string;
+  totalDescu: string;
+  totalpagar: string;
+  totalCompra: string;
+}
+export class BodyDto {
+  numItem: string;
+  precioUni: string;
+  montoDescu: string;
+  ventaNoSuj: string;
+  ventaExenta: string;
+  ventaGravada: string;
+  cantidad: string;
+  uniMedida: string;
+  codigo: string;
+  serie: string;
+  descripcion: string;
+}
 
 export class DocumentDataDTO {
   @IsNotEmpty()
@@ -84,6 +104,12 @@ export class DocumentDataDTO {
 
   @IsNotEmpty()
   header: HeaderSectionOptionsDTO;
+
+  @IsNotEmpty()
+  body: BodyDto[];
+
+  @IsNotEmpty()
+  resume: Resume;
 }
 
 export class PayloadDto {

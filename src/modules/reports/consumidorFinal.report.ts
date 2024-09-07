@@ -18,7 +18,7 @@ const logo: Content = {
 export const consumidorFinalReport = (
   data: DocumentDataDTO,
 ): TDocumentDefinitions => {
-  const { header, receptor } = data;
+  const { header, receptor, body } = data;
   const { url, ...rest } = header;
   return {
     header: logo,
@@ -30,7 +30,7 @@ export const consumidorFinalReport = (
         mhPortal: url,
       }),
       receptorSection(receptor),
-      tableSection(),
+      tableSection(body),
     ],
     styles,
   };

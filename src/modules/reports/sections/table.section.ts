@@ -1,6 +1,7 @@
+import { BodyDto } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
-const ccfData = Array(10).fill(1);
-export const tableSection = (): ContentTable => {
+
+export const tableSection = (body: BodyDto[]): ContentTable => {
   return {
     table: {
       headerRows: 1,
@@ -38,7 +39,7 @@ export const tableSection = (): ContentTable => {
           { text: 'V. Excenta', style: 'subHeader' },
           { text: 'V. Gravada', style: 'subHeader' },
         ],
-        ...mapCCF(ccfData),
+        ...mapCCF(body),
         [
           {
             text: [
@@ -319,20 +320,20 @@ export const tableSection = (): ContentTable => {
   };
 };
 
-const mapCCF = (ccf: unknown[]): any[][] => {
-  return ccf.map(() => {
+const mapCCF = (ccf: BodyDto[]): any[][] => {
+  return ccf.map((item) => {
     return [
-      { text: '1', style: 'small' },
-      { text: '01', style: 'small' },
-      { text: '3', style: 'small' },
-      { text: '001', style: 'small' },
-      { text: '100', style: 'small' },
-      { text: 'COAS', style: 'small' },
-      { text: '$1.50', style: 'small' },
-      { text: '$0.00', style: 'small' },
-      { text: '$0.00', style: 'small' },
-      { text: '$0.00', style: 'small' },
-      { text: '$0.00', style: 'small' },
+      { text: item.numItem, style: 'small' },
+      { text: item.cantidad, style: 'small' },
+      { text: item.uniMedida, style: 'small' },
+      { text: item.codigo, style: 'small' },
+      { text: item.serie, style: 'small' },
+      { text: item.descripcion, style: 'small' },
+      { text: item.precioUni, style: 'small' },
+      { text: item.montoDescu, style: 'small' },
+      { text: item.ventaNoSuj, style: 'small' },
+      { text: item.ventaExenta, style: 'small' },
+      { text: item.ventaGravada, style: 'small' },
     ];
   });
 };
