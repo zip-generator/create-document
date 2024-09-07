@@ -1,13 +1,9 @@
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces';
-import {
-  ccfTable,
-  headerSection,
-  qrSection,
-  receptorSection,
-} from './sections';
+import { headerSection, qrSection, receptorSection } from './sections';
 import { styles } from './styles';
 import { DocumentDataDTO } from '@app/dto';
 import { generateDataImage } from '@app/utils';
+import { excludeSubject } from './sections/sujeto-excluido.table';
 
 const logo: Content = {
   image: generateDataImage('src/public/images/logo.jpg'),
@@ -15,7 +11,10 @@ const logo: Content = {
   height: 50,
   margin: [10, 5],
 };
-export const ccfReport = (data: DocumentDataDTO): TDocumentDefinitions => {
+export const excludeSubjectInit = (
+  data: DocumentDataDTO,
+): TDocumentDefinitions => {
+  console.log('ENTRO EN SUJETO EXCLUIDO');
   const { header, receptor, body, resume } = data;
   const { url, ...rest } = header;
   return {
@@ -28,7 +27,7 @@ export const ccfReport = (data: DocumentDataDTO): TDocumentDefinitions => {
         mhPortal: url,
       }),
       receptorSection(receptor),
-      ccfTable(body, resume),
+      excludeSubject(body, resume),
     ],
     styles,
   };

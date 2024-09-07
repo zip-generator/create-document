@@ -2,7 +2,7 @@ import { PrinterService } from '@modules/pdf-make/printer.service';
 import { Injectable } from '@nestjs/common';
 import { TempFileService } from './temp-file.service';
 import { PayloadDto } from './dto';
-import { consumidorFinalReport } from '@modules/reports';
+import { ccfReport } from './modules/reports';
 
 @Injectable()
 export class AppService {
@@ -12,7 +12,7 @@ export class AppService {
   ) {}
   async generateDocument(payload: PayloadDto): Promise<string> {
     const { data, extension, fileName, folder } = payload;
-    const documentDefinition = consumidorFinalReport(data);
+    const documentDefinition = ccfReport(data);
     const document = this.printerService.createPdf(documentDefinition);
 
     return await this.tempFileService.saveBufferToFile({

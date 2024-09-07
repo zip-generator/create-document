@@ -1,7 +1,7 @@
 import { BodyDto, Resume } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 
-export const tableSection = (body: BodyDto[], resume: Resume): ContentTable => {
+export const ccfTable = (body: BodyDto[], resume: Resume): ContentTable => {
   return {
     table: {
       headerRows: 1,
