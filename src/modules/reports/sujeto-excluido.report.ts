@@ -13,6 +13,7 @@ const logo: Content = {
 };
 export const excludeSubjectInit = (
   data: DocumentDataDTO,
+  invoiceName: string,
 ): TDocumentDefinitions => {
   console.log('ENTRO EN SUJETO EXCLUIDO');
   const { header, receptor, body, resume } = data;
@@ -21,7 +22,7 @@ export const excludeSubjectInit = (
     header: logo,
     pageMargins: [10, 70],
     content: [
-      headerSection(rest),
+      headerSection({ ...rest, invoiceName }),
       qrSection({
         ...rest,
         mhPortal: url,

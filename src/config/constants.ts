@@ -4,7 +4,6 @@ enum STR_TIPOS_DTE {
   sujetoExcluido = '14',
   comprobanteRetencion = '07',
   notaCredito = '05',
-  notaDebito = '06',
 }
 enum DOCUMENT_TYPES {
   CONSUMIDOR_FINAL = '01',
@@ -21,14 +20,13 @@ const DTE_CUSTOM: Record<string, string> = {
   [STR_TIPOS_DTE.sujetoExcluido]: '14',
   [STR_TIPOS_DTE.comprobanteRetencion]: '07',
   [STR_TIPOS_DTE.notaCredito]: '05',
-  [STR_TIPOS_DTE.notaDebito]: '06',
 };
 
-const TIPO_IDENTIFICACION = {
-  '01': 'Reporte consumidor final',
-  '03': 'Reporte credito fiscal',
-  '07': 'Comprobante de Retencion',
-  '14': 'Comprobante de Sujeto Excluido',
-  '05': 'Nota de Credito',
+const IDENTIFICATION_TYPE = {
+  [DOCUMENT_TYPES.CONSUMIDOR_FINAL]: 'Reporte Consumidor Final',
+  [DOCUMENT_TYPES.CREDITO_FISCAL]: 'Reporte Credito Fiscal',
+  [DOCUMENT_TYPES.COMPROBANTE_RETENCION]: 'Comprobante De Retencion',
+  [DOCUMENT_TYPES.SUJETO_EXCLUIDO]: 'Comprobante De Sujeto Excluido',
+  [DOCUMENT_TYPES.NOTA_CREDITO]: 'Nota De Credito',
 };
-export { DTE_CUSTOM, DOCUMENT_TYPES, TIPO_IDENTIFICACION, STR_TIPOS_DTE };
+export { DTE_CUSTOM, DOCUMENT_TYPES, IDENTIFICATION_TYPE, STR_TIPOS_DTE };

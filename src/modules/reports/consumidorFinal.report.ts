@@ -15,14 +15,18 @@ const logo: Content = {
   height: 50,
   margin: [10, 5],
 };
-export const ccfReport = (data: DocumentDataDTO): TDocumentDefinitions => {
+export const ccfReport = (
+  data: DocumentDataDTO,
+  invoiceName: string,
+): TDocumentDefinitions => {
+  console.log('Entro en ccfReport');
   const { header, receptor, body, resume } = data;
   const { url, ...rest } = header;
   return {
     header: logo,
     pageMargins: [10, 70],
     content: [
-      headerSection(rest),
+      headerSection({ ...rest, invoiceName }),
       qrSection({
         ...rest,
         mhPortal: url,

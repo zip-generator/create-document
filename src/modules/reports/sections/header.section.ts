@@ -2,15 +2,19 @@ import { ContentColumns } from 'pdfmake/interfaces';
 import { HeaderSectionOptionsDTO } from '@app/dto';
 
 // Ejemplo de uso
-const headerSection = (
-  options: Omit<HeaderSectionOptionsDTO, 'url'>,
-): ContentColumns => {
+
+type Options = Omit<HeaderSectionOptionsDTO, 'url'>;
+interface NewOptions extends Options {
+  invoiceName: string;
+}
+const headerSection = (options: NewOptions): ContentColumns => {
   const {
     controlNumber,
     emitionDate,
     emitionTime,
     generationCode,
     receptionStamp,
+    invoiceName,
   } = options;
 
   const headerContent: ContentColumns = {
@@ -83,7 +87,7 @@ const headerSection = (
                     alignment: 'center',
                   },
                   {
-                    text: 'COMPROBANTE DE FACTURA CONSUMIDOR FINAL',
+                    text: `${invoiceName}`,
                     alignment: 'center',
                     style: 'header',
                   },

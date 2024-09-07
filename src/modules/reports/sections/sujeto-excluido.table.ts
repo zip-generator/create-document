@@ -14,12 +14,12 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             alignment: 'center',
             style: 'header', // Aplica el estilo 'header'
           },
-          '',
-          '',
-          '',
-          '',
-          '',
-          '',
+          { text: '' },
+          { text: '' },
+          { text: '' },
+          { text: '' },
+          { text: '' },
+          { text: '' },
         ],
         [
           { text: 'N. Item', style: 'subHeader' },
@@ -96,13 +96,16 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                   {
                     stack: [
                       { text: 'Valor En Letras:', style: 'smallBold' },
-                      { text: resume?.totalLetras, style: 'smallBold' },
+                      { text: resume?.totalLetras ?? '', style: 'smallBold' },
                     ],
                   },
                   {
                     stack: [
                       { text: 'Observaciones:', style: 'smallBold' },
-                      { text: resume?.['observaciones'], style: 'smallBold' },
+                      {
+                        text: resume?.['observaciones'] ?? '',
+                        style: 'smallBold',
+                      },
                     ],
                   },
                 ],
@@ -116,7 +119,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                         style: 'smallBold',
                       },
                       {
-                        text: resume?.['condicionOperacion'],
+                        text: resume?.['condicionOperacion'] ?? '',
                         style: 'smallBold',
                       },
                     ],
@@ -154,7 +157,7 @@ const mapCCF = (ccf: BodyDto[]): any[][] => {
       { text: item.descripcion, style: 'small' },
       { text: item.precioUni, style: 'small' },
       { text: item.montoDescu, style: 'small' },
-      { text: item?.['compra'], style: 'small' },
+      { text: item?.['compra'] ?? '$0.00', style: 'small' },
     ];
   });
 };

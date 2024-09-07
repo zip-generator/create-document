@@ -1,9 +1,11 @@
+import { DOCUMENT_TYPES } from '@app/config/constants';
 import { Type } from 'class-transformer';
 import {
   IsString,
   ValidateNested,
   IsNotEmpty,
   IsOptional,
+  IsEnum,
 } from 'class-validator';
 
 export class DirectioDto {
@@ -128,4 +130,7 @@ export class PayloadDto {
   folder: string;
   @IsString()
   extension: string;
+
+  @IsEnum(DOCUMENT_TYPES)
+  invoiceType: DOCUMENT_TYPES;
 }
