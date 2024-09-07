@@ -4,7 +4,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
   return {
     table: {
       headerRows: 1,
-      widths: Array(11).fill('auto'), // 11 columnas
+      widths: Array(7).fill('auto'), // 11 columnas
       body: [
         [
           {
@@ -14,12 +14,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             alignment: 'center',
             style: 'header', // Aplica el estilo 'header'
           },
-          { text: '' },
-          { text: '' },
-          { text: '' },
-          { text: '' },
-          { text: '' },
-          { text: '' },
+          ...Array(6).fill({ text: '' }),
         ],
         [
           { text: 'N. Item', style: 'subHeader' },
@@ -39,9 +34,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             style: 'smallBold',
             alignment: 'center',
           },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
+          ...Array(3).fill({ text: '', style: 'small' }),
           { text: 'Sumatoria de Ventas:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
           { text: resume.totalCompra, style: 'small' },
@@ -53,9 +46,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             style: 'smallBold',
             alignment: 'center',
           },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
+          ...Array(3).fill({ text: '', style: 'small' }),
           { text: 'Sub-Total:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
           { text: resume.subTotal, style: 'small' },
@@ -67,9 +58,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             style: 'smallBold',
             alignment: 'center',
           },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
+          ...Array(3).fill({ text: '', style: 'small' }),
           { text: 'Total a Pagar:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
           { text: resume.totalPagar, style: 'small' },
@@ -81,12 +70,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             style: 'smallBold',
             alignment: 'center',
           },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
+          ...Array(6).fill({ text: '', style: 'small' }),
         ],
         [
           {
@@ -103,7 +87,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                     stack: [
                       { text: 'Observaciones:', style: 'smallBold' },
                       {
-                        text: resume?.['observaciones'] ?? '',
+                        text: resume?.observaciones ?? '',
                         style: 'smallBold',
                       },
                     ],
@@ -119,7 +103,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                         style: 'smallBold',
                       },
                       {
-                        text: resume?.['condicionOperacion'] ?? '',
+                        text: resume?.condicionOperacion ?? '',
                         style: 'smallBold',
                       },
                     ],
@@ -137,12 +121,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
             style: 'smallBold',
             alignment: 'center',
           },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
-          { text: '', style: 'small' },
+          ...Array(6).fill({ text: '', style: 'small' }),
         ],
       ],
     },
@@ -157,7 +136,7 @@ const mapCCF = (ccf: BodyDto[]): any[][] => {
       { text: item.descripcion, style: 'small' },
       { text: item.precioUni, style: 'small' },
       { text: item.montoDescu, style: 'small' },
-      { text: item?.['compra'] ?? '$0.00', style: 'small' },
+      { text: item?.compra ?? '$0.00', style: 'small' },
     ];
   });
 };

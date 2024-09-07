@@ -80,29 +80,59 @@ export class HeaderSectionOptionsDTO {
   url: string;
 }
 export class Resume {
+  @IsString()
   subTotal: string;
+  @IsString()
   reteRenta: string;
+  @IsString()
   totalDescu: string;
+  @IsString()
   totalPagar: string;
+  @IsString()
   totalCompra: string;
+  @IsString()
   totalLetras: string;
+  @IsString()
   totalExcenta: string;
+  @IsString()
   totalGravada: string;
+  @IsString()
   totalIva: string;
+  @IsString()
   montoTotalOperacion: string;
+  @IsOptional()
+  @IsString()
+  condicionOperacion?: string;
+  @IsOptional()
+  @IsString()
+  observaciones: string;
 }
 export class BodyDto {
+  @IsString()
   numItem: string;
+  @IsString()
   precioUni: string;
+  @IsString()
   montoDescu: string;
+  @IsString()
   ventaNoSuj: string;
+  @IsString()
   ventaExenta: string;
+  @IsString()
   ventaGravada: string;
+  @IsString()
   cantidad: string;
+  @IsString()
   uniMedida: string;
+  @IsString()
   codigo: string;
+  @IsString()
   serie: string;
+  @IsString()
   descripcion: string;
+  @IsOptional()
+  @IsString()
+  compra?: string;
 }
 
 export class DocumentDataDTO {
