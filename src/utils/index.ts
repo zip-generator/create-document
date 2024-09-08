@@ -13,6 +13,7 @@ export const generateDataImage = (imagePath: string): string => {
     // Obtener la ruta absoluta de la imagen
     const absolutePath = path.resolve(imagePath);
 
+    console.log({});
     // Leer la imagen como un buffer y convertirla a base64
     const imageBuffer = fs.readFileSync(absolutePath);
     const imageBase64 = imageBuffer.toString('base64');

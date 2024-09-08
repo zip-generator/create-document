@@ -8,9 +8,10 @@ import {
 import { styles } from './styles';
 import { DocumentDataDTO } from '@app/dto';
 import { generateDataImage } from '@app/utils';
+import { join } from 'path';
 
 const logo: Content = {
-  image: generateDataImage('src/public/images/logo.jpg'),
+  image: generateDataImage(join(process.cwd(), 'dist/public/images/logo.jpg')),
   width: 100,
   height: 50,
   margin: [10, 5],
