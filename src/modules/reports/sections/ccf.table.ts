@@ -1,7 +1,11 @@
 import { BodyDto, Resume } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 
-export const ccfTable = (body: BodyDto[], resume: Resume): ContentTable => {
+export const ccfTable = (
+  body: BodyDto[],
+  resume: Resume,
+  nextDay: string,
+): ContentTable => {
   return {
     table: {
       headerRows: 1,
@@ -341,7 +345,7 @@ export const ccfTable = (body: BodyDto[], resume: Resume): ContentTable => {
         ],
         [
           {
-            text: 'Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a 12-04-2024 23:59pm',
+            text: `Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a ${nextDay}`,
             colSpan: 11,
             style: 'smallBold',
             alignment: 'center',

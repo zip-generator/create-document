@@ -19,7 +19,7 @@ export const ccfReport = (
   data: DocumentDataDTO,
   invoiceName: string,
 ): TDocumentDefinitions => {
-  const { header, receptor, body, resume } = data;
+  const { header, receptor, body, resume, fechaNextDay } = data;
   const { url, ...rest } = header;
   return {
     header: logo,
@@ -31,7 +31,7 @@ export const ccfReport = (
         mhPortal: url,
       }),
       receptorSection(receptor),
-      ccfTable(body, resume),
+      ccfTable(body, resume, fechaNextDay),
     ],
     styles,
   };

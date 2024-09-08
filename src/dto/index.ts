@@ -42,17 +42,17 @@ export class ReceptorContentDTO {
   phone: string;
 
   @IsOptional()
-  doctor: string;
-  // @IsOptional()
-  // deducible: string;
-  // @IsOptional()
-  // copaago: string;
-  // @IsOptional()
-  // coaseguroPersentage: string;
+  doctor?: string;
   @IsOptional()
-  atencionId: string;
+  deducible?: string;
   @IsOptional()
-  insuranceCompany: string;
+  copaago?: string;
+  @IsOptional()
+  coaseguroPercentage?: string;
+  @IsOptional()
+  atencionId?: string;
+  @IsOptional()
+  insuranceCompany?: string;
 }
 
 export class HeaderSectionOptionsDTO {
@@ -147,6 +147,9 @@ export class DocumentDataDTO {
 
   @IsNotEmpty()
   resume: Resume;
+
+  @IsString()
+  fechaNextDay: string;
 }
 
 export class PayloadDto {

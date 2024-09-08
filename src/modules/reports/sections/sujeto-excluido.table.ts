@@ -4,7 +4,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
   return {
     table: {
       headerRows: 1,
-      widths: Array(7).fill('auto'), // 11 columnas
+      widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'], // 11 columnas
       body: [
         [
           {

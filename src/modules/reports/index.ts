@@ -1,2 +1,2 @@
 export * from './sections';
-export * from './consumidorFinal.report';
+export * from './ccf.report';
