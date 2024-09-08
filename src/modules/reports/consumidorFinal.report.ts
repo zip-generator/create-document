@@ -19,7 +19,6 @@ export const ccfReport = (
   data: DocumentDataDTO,
   invoiceName: string,
 ): TDocumentDefinitions => {
-  console.log('Entro en ccfReport');
   const { header, receptor, body, resume } = data;
   const { url, ...rest } = header;
   return {

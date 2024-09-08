@@ -15,7 +15,6 @@ export const excludeSubjectInit = (
   data: DocumentDataDTO,
   invoiceName: string,
 ): TDocumentDefinitions => {
-  console.log('ENTRO EN SUJETO EXCLUIDO');
   const { header, receptor, body, resume } = data;
   const { url, ...rest } = header;
   return {

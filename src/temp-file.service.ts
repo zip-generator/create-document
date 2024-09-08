@@ -19,9 +19,7 @@ export class TempFileService {
     extension,
   }: ISaveBufferToFile): Promise<string> {
     const dirPath = join(process.cwd(), 'temp-data', folder);
-    this.#logger.debug('saving file', {
-      dirPath: join(dirPath, `${fileName}.${extension}`),
-    });
+
     await this.createDirectoryIfNotExists(dirPath);
 
     try {
