@@ -8,7 +8,6 @@ export const creditNoteTable = ({
   nextDay,
   extension,
 }: PropTable): ContentTable => {
-  console.log(resume);
   return {
     table: {
       headerRows: 1,
@@ -137,6 +136,8 @@ export const creditNoteTable = ({
             colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
           },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
@@ -145,7 +146,11 @@ export const creditNoteTable = ({
           { text: '', style: 'small' },
           { text: '$0.00', style: 'small', alignment: 'right' },
           { text: '$0.00', style: 'small', alignment: 'right' },
-          { text: resume.totalExcenta, style: 'small', alignment: 'right' },
+          {
+            text: `${resume?.totalExcenta ?? '0.00'}`,
+            style: 'small',
+            alignment: 'right',
+          },
           { text: resume.totalGravada, style: 'small', alignment: 'right' },
         ],
         [
@@ -290,6 +295,8 @@ export const creditNoteTable = ({
             colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
           },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
@@ -392,18 +399,25 @@ export const creditNoteTable = ({
             colSpan: 3,
             margin: [2, 2],
             stack: [
-              { text: 'Retención de Renta:', style: 'smallBold' },
+              {
+                text: 'Retención de Renta:',
+                style: 'smallBold',
+                margin: [1, 2],
+              },
               {
                 text: 'Monto total de la operación:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
               {
                 text: 'Total otros montos no afectos:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
               {
                 text: 'TOTAL A PAGAR:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
             ],
           },
@@ -415,12 +429,19 @@ export const creditNoteTable = ({
               { text: '$0.00 ', style: 'small', alignment: 'right' },
               {
                 text: `${resume.montoTotalOperacion} `,
+                margin: [1, 2],
                 style: 'small',
                 alignment: 'right',
               },
-              { text: '$0.00 ', style: 'small', alignment: 'right' },
+              {
+                text: '$0.00 ',
+                style: 'small',
+                alignment: 'right',
+                margin: [1, 2],
+              },
               {
                 text: `${resume.montoTotalOperacion} `,
+                margin: [1, 2],
                 style: 'small',
                 alignment: 'right',
               },
@@ -429,7 +450,7 @@ export const creditNoteTable = ({
         ],
         [
           {
-            text: `Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a ${nextDay}`,
+            text: `Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a ${nextDay} a las 23:59:59 horas`,
             colSpan: 10,
             style: 'smallBold',
             alignment: 'center',

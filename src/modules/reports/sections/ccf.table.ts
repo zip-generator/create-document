@@ -136,6 +136,8 @@ export const ccfTable = ({
             colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
           },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
@@ -144,7 +146,11 @@ export const ccfTable = ({
           { text: '', style: 'small' },
           { text: '$0.00', style: 'small', alignment: 'right' },
           { text: '$0.00', style: 'small', alignment: 'right' },
-          { text: resume.totalExcenta, style: 'small', alignment: 'right' },
+          {
+            text: `${resume?.totalExcenta ?? '0.00'}`,
+            style: 'small',
+            alignment: 'right',
+          },
           { text: resume.totalGravada, style: 'small', alignment: 'right' },
         ],
         [
@@ -266,6 +272,8 @@ export const ccfTable = ({
             colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
           },
           { text: '', style: 'small' },
           { text: '', style: 'small' },
@@ -368,13 +376,19 @@ export const ccfTable = ({
             colSpan: 3,
             margin: [2, 2],
             stack: [
-              { text: 'Monto total de la operación:', style: 'smallBold' },
+              {
+                text: 'Monto total de la operación:',
+                margin: [1, 2],
+                style: 'smallBold',
+              },
               {
                 text: 'Total otros montos no afectos:',
+                margin: [1, 2],
                 style: 'smallBold',
               },
               {
                 text: 'Total A Pagar:',
+                margin: [1, 2],
                 style: 'smallBold',
               },
             ],
@@ -387,12 +401,19 @@ export const ccfTable = ({
               {
                 text: `${resume.montoTotalOperacion} `,
                 style: 'small',
+                margin: [2, 2],
                 alignment: 'right',
               },
-              { text: '$0.00 ', style: 'small', alignment: 'right' },
+              {
+                text: '$0.00 ',
+                style: 'small',
+                margin: [1, 2],
+                alignment: 'right',
+              },
               {
                 text: `${resume.totalPagar} `,
                 style: 'small',
+                margin: [2, 2],
                 alignment: 'right',
               },
             ],
@@ -400,7 +421,7 @@ export const ccfTable = ({
         ],
         [
           {
-            text: `Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a ${nextDay}`,
+            text: `Por disposición del Ministerio de Hacienda este documento electrónico no se podrá invalidar posterior a ${nextDay} a las 23:59:59 horas`,
             colSpan: 10,
             style: 'smallBold',
             alignment: 'center',
