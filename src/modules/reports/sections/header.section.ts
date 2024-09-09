@@ -83,7 +83,7 @@ const headerSection = (options: NewOptions): ContentColumns => {
                 text: [
                   {
                     text: 'DOCUMENTO TRIBUTARIO ELECTRÓNICO\n',
-                    style: 'subHeader',
+                    style: 'header',
                     alignment: 'center',
                   },
                   {

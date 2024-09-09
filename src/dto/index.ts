@@ -79,6 +79,13 @@ export class HeaderSectionOptionsDTO {
   @IsString()
   url: string;
 }
+
+export class Tributos {
+  @IsString()
+  descripcion: string;
+  @IsString()
+  valor: string;
+}
 export class Resume {
   @IsString()
   subTotal: string;
@@ -106,6 +113,9 @@ export class Resume {
   @IsOptional()
   @IsString()
   observaciones: string;
+
+  @IsOptional()
+  tributos: Tributos[];
 }
 export class BodyDto {
   @IsString()
@@ -133,8 +143,26 @@ export class BodyDto {
   @IsOptional()
   @IsString()
   compra?: string;
+  @IsOptional()
+  @IsString()
+  deducible: string;
+  @IsOptional()
+  @IsString()
+  copaago: string;
+  @IsOptional()
+  @IsString()
+  coaseguroPercentage: string;
 }
-
+export class ExtensionDto {
+  @IsString()
+  nombreEntrega: string;
+  @IsString()
+  noDocumentoEntrega: string;
+  @IsString()
+  nombreRecibe: string;
+  @IsString()
+  noDocumentoRecibe: string;
+}
 export class DocumentDataDTO {
   @IsNotEmpty()
   receptor: ReceptorContentDTO;
@@ -150,6 +178,9 @@ export class DocumentDataDTO {
 
   @IsString()
   fechaNextDay: string;
+
+  @IsNotEmpty()
+  extension: ExtensionDto;
 }
 
 export class PayloadDto {

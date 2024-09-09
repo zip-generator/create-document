@@ -16,4 +16,18 @@ export const styles: StyleDictionary = {
     fontSize: 9,
     bold: true,
   },
+  hospiColor: {
+    fontSize: 10,
+    bold: true,
+    color: '#4e8bc8',
+  },
+  hospiSmallBold: {
+    color: '#4e8bc8',
+    fontSize: 9,
+    bold: true,
+  },
+  hospiSmall: {
+    color: '#4e8bc8',
+    fontSize: 9,
+  },
 };

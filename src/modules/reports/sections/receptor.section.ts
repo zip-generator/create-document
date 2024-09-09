@@ -34,11 +34,11 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
       {
         columns: [
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Nombre o Razón Social:',
                 style: 'subHeader',
-                bold: true,
               },
               {
                 text: name,
@@ -47,11 +47,11 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Documento:',
                 style: 'subHeader',
-                bold: true,
               },
               {
                 text: document,
@@ -60,6 +60,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Actividad Economica:',
@@ -77,6 +78,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
       {
         columns: [
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Direccion:',
@@ -90,6 +92,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'NRC:',
@@ -97,12 +100,13 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
                 bold: true,
               },
               {
-                text: nrc ?? 'N/A',
+                text: nrc ?? '',
                 style: 'small',
               },
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Télefono:',
@@ -120,6 +124,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
       {
         columns: [
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Aseguradora:',
@@ -127,12 +132,13 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
                 bold: true,
               },
               {
-                text: insuranceCompany ?? 'N/A ',
+                text: insuranceCompany ?? ' ',
                 style: 'small',
               },
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Médico:',
@@ -140,12 +146,13 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
                 bold: true,
               },
               {
-                text: doctor ?? 'N/A ',
+                text: doctor ?? ' ',
                 style: 'small',
               },
             ],
           },
           {
+            margin: [2, 2],
             stack: [
               {
                 text: 'Atención:',
@@ -153,7 +160,7 @@ export const receptorSection = (data: ReceptorContentDTO): ContentStack => {
                 bold: true,
               },
               {
-                text: atencionId ?? 'N/A',
+                text: atencionId ?? '',
                 style: 'small',
               },
             ],

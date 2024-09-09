@@ -1,13 +1,14 @@
-import { BodyDto } from '@app/dto';
+import { BodyDto, Tributos } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 import { PropTable } from '../interfaces';
 
-export const ccfTable = ({
+export const creditNoteTable = ({
   body,
   resume,
   nextDay,
   extension,
 }: PropTable): ContentTable => {
+  console.log(resume);
   return {
     table: {
       headerRows: 1,
@@ -238,15 +239,22 @@ export const ccfTable = ({
             colSpan: 3,
             margin: [2, 2],
             stack: [
-              { text: 'Total descuentos:', style: 'smallBold' },
               {
-                text: 'Suma de operaciones sin impuesto:',
+                text: 'Suma de operaciones (con impuestos):',
+                margin: [1, 2],
                 style: 'smallBold',
               },
               {
-                text: 'Impuesto al Valor Agregado 13%:',
+                text: 'Total descuentos:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
+              {
+                text: 'Sub Total:',
+                style: 'smallBold',
+                margin: [1, 2],
+              },
+              ...mapTributtes(resume.tributos),
             ],
           },
           { text: '', style: 'small' },
@@ -254,9 +262,25 @@ export const ccfTable = ({
           {
             margin: [2, 2],
             stack: [
-              { text: resume.totalDescu, style: 'small', alignment: 'right' },
-              { text: resume.subTotal, style: 'small', alignment: 'right' },
-              { text: resume.totalIva, style: 'small', alignment: 'right' },
+              {
+                text: resume.subTotal,
+                style: 'small',
+                margin: [1, 2],
+                alignment: 'right',
+              },
+              {
+                text: resume.totalDescu,
+                margin: [1, 2],
+                style: 'small',
+                alignment: 'right',
+              },
+              {
+                text: resume?.['subTotalVentas'] ?? '',
+                style: 'small',
+                margin: [1, 2],
+                alignment: 'right',
+              },
+              ...mapTributesValue(resume.tributos),
             ],
           },
         ],
@@ -273,7 +297,7 @@ export const ccfTable = ({
           { text: '', style: 'small' },
           { text: '', style: 'small' },
           {
-            text: 'IVA percibido:',
+            text: 'IVA Retenido:',
             colSpan: 3,
             style: 'smallBold',
           },
@@ -368,13 +392,17 @@ export const ccfTable = ({
             colSpan: 3,
             margin: [2, 2],
             stack: [
-              { text: 'Monto total de la operación:', style: 'smallBold' },
+              { text: 'Retención de Renta:', style: 'smallBold' },
+              {
+                text: 'Monto total de la operación:',
+                style: 'smallBold',
+              },
               {
                 text: 'Total otros montos no afectos:',
                 style: 'smallBold',
               },
               {
-                text: 'Total A Pagar:',
+                text: 'TOTAL A PAGAR:',
                 style: 'smallBold',
               },
             ],
@@ -384,6 +412,7 @@ export const ccfTable = ({
           {
             margin: [2, 2],
             stack: [
+              { text: '$0.00 ', style: 'small', alignment: 'right' },
               {
                 text: `${resume.montoTotalOperacion} `,
                 style: 'small',
@@ -391,7 +420,7 @@ export const ccfTable = ({
               },
               { text: '$0.00 ', style: 'small', alignment: 'right' },
               {
-                text: `${resume.totalPagar} `,
+                text: `${resume.montoTotalOperacion} `,
                 style: 'small',
                 alignment: 'right',
               },
@@ -435,4 +464,19 @@ const mapCCF = (ccf: BodyDto[]): any[][] => {
       { text: item.ventaGravada, style: 'small', alignment: 'right' },
     ];
   });
+};
+const mapTributtes = (tributtes: Tributos[]) => {
+  return tributtes.map((item) => ({
+    text: item.descripcion,
+    style: 'smallBold',
+    margin: [1, 2],
+  }));
+};
+const mapTributesValue = (tributtes: Tributos[]) => {
+  return tributtes.map((item) => ({
+    text: item.valor,
+    style: 'small',
+    alignment: 'right',
+    margin: [1, 2],
+  }));
 };

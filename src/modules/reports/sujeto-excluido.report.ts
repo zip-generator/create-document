@@ -8,7 +8,7 @@ import { join } from 'path';
 
 const logo: Content = {
   image: generateDataImage(join(process.cwd(), 'dist/public/images/logo.jpg')),
-  width: 100,
+  width: 150,
   height: 50,
   margin: [10, 5],
 };

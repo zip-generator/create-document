@@ -13,10 +13,34 @@ import { TDocumentDefinitions } from 'pdfmake/interfaces';
 // };
 const fonts = {
   Roboto: {
-    normal: join(__dirname, 'fonts/Roboto-Regular.ttf'),
-    bold: join(__dirname, 'fonts/Roboto-Regular.ttf'),
-    italics: join(__dirname, 'fonts/Roboto-Regular.ttf'),
-    bolditalics: join(__dirname, 'fonts/Roboto-Regular.ttf'),
+    normal: join(
+      process.cwd(),
+      'dist',
+      'modules',
+      'pdf-make',
+      'fonts/Roboto-Regular.ttf',
+    ),
+    bold: join(
+      process.cwd(),
+      'dist',
+      'modules',
+      'pdf-make',
+      'fonts/Roboto-Bold.ttf',
+    ),
+    italics: join(
+      process.cwd(),
+      'dist',
+      'modules',
+      'pdf-make',
+      'fonts/Roboto-Italic.ttf',
+    ),
+    bolditalics: join(
+      process.cwd(),
+      'dist',
+      'modules',
+      'pdf-make',
+      'fonts/Roboto-BlackItalic.ttf',
+    ),
   },
 };
 

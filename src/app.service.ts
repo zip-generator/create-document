@@ -11,6 +11,7 @@ import {
 } from './config/constants';
 import { excludeSubjectInit } from './modules/reports/sujeto-excluido.report';
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
+import { creditNoteReport } from './modules/reports/credit-note.report';
 
 @Injectable()
 export class AppService {
@@ -20,6 +21,7 @@ export class AppService {
     [DTE_CUSTOM[STR_TIPOS_DTE.creditoFiscal]]: ccfReport,
     [DTE_CUSTOM[STR_TIPOS_DTE.notaCredito]]: ccfReport,
     [DTE_CUSTOM[STR_TIPOS_DTE.comprobanteRetencion]]: ccfReport,
+    [DTE_CUSTOM[STR_TIPOS_DTE.notaCredito]]: creditNoteReport,
   };
   constructor(
     private readonly printerService: PrinterService,

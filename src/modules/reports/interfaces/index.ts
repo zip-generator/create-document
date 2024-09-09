@@ -1,3 +1,5 @@
+import { BodyDto, ExtensionDto, Resume } from '@app/dto';
+
 interface ReceptorContent {
   name: string;
   document: string;
@@ -18,5 +20,10 @@ interface DocumentData {
   receptor: ReceptorContent;
   header: HeaderSectionOptions;
 }
-
-export { HeaderSectionOptions, DocumentData, ReceptorContent };
+interface PropTable {
+  body: BodyDto[];
+  resume: Resume;
+  nextDay: string;
+  extension: ExtensionDto;
+}
+export { HeaderSectionOptions, DocumentData, ReceptorContent, PropTable };

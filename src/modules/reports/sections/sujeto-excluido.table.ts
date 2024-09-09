@@ -4,73 +4,103 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
   return {
     table: {
       headerRows: 1,
-      widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'], // 11 columnas
+      widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto'],
       body: [
         [
           {
             text: 'Cuerpo Documento',
             bold: true,
-            colSpan: 7,
+            colSpan: 6,
             alignment: 'center',
             style: 'header', // Aplica el estilo 'header'
           },
-          ...Array(6).fill({ text: '' }),
+          ...Array(5).fill({ text: '' }),
         ],
         [
-          { text: 'N. Item', style: 'subHeader' },
-          { text: 'Cantidad', style: 'subHeader' },
-          { text: 'U. Medida', style: 'subHeader' },
-          { text: 'Descripción', style: 'subHeader' },
-          { text: 'Precio Uni.', style: 'subHeader' },
-          { text: 'Descuento', style: 'subHeader' },
-          { text: 'Ventas', style: 'subHeader' },
+          {
+            text: 'N. Item',
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
+          {
+            text: 'Cantidad',
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
+          {
+            text: 'Descripción',
+            colSpan: 2,
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
+          {
+            text: 'Precio Uni.',
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
+          {
+            text: 'Descuento',
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
+          {
+            text: 'Ventas',
+            style: 'subHeader',
+            fillColor: '#4e8bc8',
+            color: '#fbfbfb',
+          },
         ],
         ...mapCCF(body),
 
         [
           {
             text: '',
-            colSpan: 4,
+            colSpan: 2,
             style: 'smallBold',
             alignment: 'center',
           },
-          ...Array(3).fill({ text: '', style: 'small' }),
+          ...Array(2).fill({ text: '', style: 'small' }),
           { text: 'Sumatoria de Ventas:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
-          { text: resume.totalCompra, style: 'small' },
+          { text: resume.totalCompra, style: 'small', alignment: 'right' },
         ],
         [
           {
             text: '',
-            colSpan: 4,
+            colSpan: 3,
             style: 'smallBold',
             alignment: 'center',
           },
-          ...Array(3).fill({ text: '', style: 'small' }),
+          ...Array(2).fill({ text: '', style: 'small' }),
           { text: 'Sub-Total:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
-          { text: resume.subTotal, style: 'small' },
+          { text: resume.subTotal, style: 'small', alignment: 'right' },
         ],
         [
           {
             text: '',
-            colSpan: 4,
+            colSpan: 3,
             style: 'smallBold',
             alignment: 'center',
           },
-          ...Array(3).fill({ text: '', style: 'small' }),
+          ...Array(2).fill({ text: '', style: 'small' }),
           { text: 'Total a Pagar:', colSpan: 2, style: 'small' },
           { text: '', style: 'small' },
-          { text: resume.totalPagar, style: 'small' },
+          { text: resume.totalPagar, style: 'small', alignment: 'right' },
         ],
         [
           {
             text: '',
-            colSpan: 7,
+            colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
           },
-          ...Array(6).fill({ text: '', style: 'small' }),
+          ...Array(5).fill({ text: '', style: 'small' }),
         ],
         [
           {
@@ -117,11 +147,11 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                 ],
               },
             ],
-            colSpan: 7,
+            colSpan: 6,
             style: 'smallBold',
             alignment: 'center',
           },
-          ...Array(6).fill({ text: '', style: 'small' }),
+          ...Array(5).fill({ text: '', style: 'small' }),
         ],
       ],
     },
@@ -130,13 +160,12 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
 const mapCCF = (ccf: BodyDto[]): any[][] => {
   return ccf.map((item) => {
     return [
-      { text: item.numItem, style: 'small' },
-      { text: item.cantidad, style: 'small' },
-      { text: item.uniMedida, style: 'small' },
-      { text: item.descripcion, style: 'small' },
-      { text: item.precioUni, style: 'small' },
-      { text: item.montoDescu, style: 'small' },
-      { text: item?.compra ?? '$0.00', style: 'small' },
+      { text: item.numItem, style: 'small', alignment: 'left' },
+      { text: item.cantidad, style: 'small', alignment: 'left' },
+      { text: item.descripcion, style: 'small', alignment: 'left' },
+      { text: item.precioUni, style: 'small', alignment: 'right' },
+      { text: item.montoDescu, style: 'small', alignment: 'right' },
+      { text: item?.compra ?? '$0.00', style: 'small', alignment: 'right' },
     ];
   });
 };

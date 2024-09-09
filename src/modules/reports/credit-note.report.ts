@@ -1,14 +1,10 @@
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces';
-import {
-  ccfTable,
-  headerSection,
-  qrSection,
-  receptorSection,
-} from './sections';
+import { headerSection, qrSection, receptorSection } from './sections';
 import { styles } from './styles';
 import { DocumentDataDTO } from '@app/dto';
 import { generateDataImage } from '@app/utils';
 import { join } from 'path';
+import { creditNoteTable } from './sections/creditNote.section';
 
 const logo: Content = {
   image: generateDataImage(join(process.cwd(), 'dist/public/images/logo.jpg')),
@@ -16,7 +12,7 @@ const logo: Content = {
   height: 50,
   margin: [10, 5],
 };
-export const ccfReport = (
+export const creditNoteReport = (
   data: DocumentDataDTO,
   invoiceName: string,
 ): TDocumentDefinitions => {
@@ -32,7 +28,7 @@ export const ccfReport = (
         mhPortal: url,
       }),
       receptorSection(receptor),
-      ccfTable({ body, resume, nextDay: fechaNextDay, extension }),
+      creditNoteTable({ body, resume, nextDay: fechaNextDay, extension }),
     ],
     styles,
   };

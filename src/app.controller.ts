@@ -11,6 +11,7 @@ export class AppController {
 
   @MessagePattern(GENERATE_DOCUMENT)
   generateDocument(@Payload() payload: PayloadDto): Promise<string> {
+    // this.#logger.log(`Received payload: ${JSON.stringify(payload)}`);
     return this.appService.generateDocument(payload);
   }
 }
