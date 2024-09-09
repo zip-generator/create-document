@@ -244,14 +244,16 @@ export const ccfTable = ({
             colSpan: 3,
             margin: [2, 2],
             stack: [
-              { text: 'Total descuentos:', style: 'smallBold' },
+              { text: 'Total descuentos:', style: 'smallBold', margin: [1, 2] },
               {
                 text: 'Suma de operaciones sin impuesto:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
               {
                 text: 'Impuesto al Valor Agregado 13%:',
                 style: 'smallBold',
+                margin: [1, 2],
               },
             ],
           },
@@ -260,9 +262,24 @@ export const ccfTable = ({
           {
             margin: [2, 2],
             stack: [
-              { text: resume.totalDescu, style: 'small', alignment: 'right' },
-              { text: resume.subTotal, style: 'small', alignment: 'right' },
-              { text: resume.totalIva, style: 'small', alignment: 'right' },
+              {
+                text: resume.totalDescu,
+                style: 'small',
+                alignment: 'right',
+                margin: [1, 2],
+              },
+              {
+                text: resume.subTotal,
+                style: 'small',
+                alignment: 'right',
+                margin: [1, 2],
+              },
+              {
+                text: resume.totalIva,
+                style: 'small',
+                alignment: 'right',
+                margin: [1, 2],
+              },
             ],
           },
         ],
