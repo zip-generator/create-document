@@ -4,7 +4,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
   return {
     table: {
       headerRows: 1,
-      widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto'],
+      widths: ['auto', 'auto', '*', 'auto', 'auto', 'auto'],
       body: [
         [
           {
@@ -110,7 +110,7 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                   {
                     stack: [
                       { text: 'Valor En Letras:', style: 'smallBold' },
-                      { text: resume?.totalLetras ?? '', style: 'smallBold' },
+                      { text: resume?.totalLetras ?? '', style: 'small' },
                     ],
                   },
                   {
@@ -134,14 +134,14 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
                       },
                       {
                         text: resume?.condicionOperacion ?? '',
-                        style: 'smallBold',
+                        style: 'small',
                       },
                     ],
                   },
                   {
                     stack: [
-                      { text: '', style: 'smallBold' },
-                      { text: '', style: 'smallBold' },
+                      { text: '', style: 'small' },
+                      { text: '', style: 'small' },
                     ],
                   },
                 ],
@@ -159,13 +159,14 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
 };
 const mapCCF = (ccf: BodyDto[]): any[][] => {
   return ccf.map((item) => {
+    console.log({ item });
     return [
       { text: item.numItem ?? '\n', style: 'small', alignment: 'left' },
       { text: item.cantidad ?? '\n', style: 'small', alignment: 'left' },
       { text: item.descripcion ?? '\n', style: 'small', alignment: 'left' },
       { text: item.precioUni ?? '\n', style: 'small', alignment: 'right' },
       { text: item.montoDescu ?? '\n', style: 'small', alignment: 'right' },
-      { text: item?.compra ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.compra ?? '\n', style: 'small', alignment: 'right' },
     ];
   });
 };
