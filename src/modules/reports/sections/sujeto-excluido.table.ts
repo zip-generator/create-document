@@ -160,12 +160,12 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
 const mapCCF = (ccf: BodyDto[]): any[][] => {
   return ccf.map((item) => {
     return [
-      { text: item.numItem, style: 'small', alignment: 'left' },
-      { text: item.cantidad, style: 'small', alignment: 'left' },
-      { text: item.descripcion, style: 'small', alignment: 'left' },
-      { text: item.precioUni, style: 'small', alignment: 'right' },
-      { text: item.montoDescu, style: 'small', alignment: 'right' },
-      { text: item?.compra ?? '$0.00', style: 'small', alignment: 'right' },
+      { text: item.numItem ?? '\n', style: 'small', alignment: 'left' },
+      { text: item.cantidad ?? '\n', style: 'small', alignment: 'left' },
+      { text: item.descripcion ?? '\n', style: 'small', alignment: 'left' },
+      { text: item.precioUni ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.montoDescu ?? '\n', style: 'small', alignment: 'right' },
+      { text: item?.compra ?? '\n', style: 'small', alignment: 'right' },
     ];
   });
 };

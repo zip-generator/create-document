@@ -11,6 +11,7 @@ export const styles: StyleDictionary = {
   },
   small: {
     fontSize: 9,
+    bold: false,
   },
   smallBold: {
     fontSize: 9,

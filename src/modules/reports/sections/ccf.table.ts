@@ -461,16 +461,21 @@ export const ccfTable = ({
 const mapCCF = (ccf: BodyDto[]): any[][] => {
   return ccf.map((item) => {
     return [
-      { text: item.numItem, style: 'small', alignment: 'left' },
-      { text: item.cantidad, style: 'small', alignment: 'right' },
-      { text: item.codigo, style: 'small', alignment: 'left' },
-      { text: item.serie, style: 'small', alignment: 'left' },
-      { text: item.descripcion, colSpan: 3, style: 'small', alignment: 'left' },
-      { text: item.precioUni, style: 'small', alignment: 'right' },
-      { text: item.montoDescu, style: 'small', alignment: 'right' },
-      { text: item.ventaNoSuj, style: 'small', alignment: 'right' },
-      { text: item.ventaExenta, style: 'small', alignment: 'right' },
-      { text: item.ventaGravada, style: 'small', alignment: 'right' },
+      { text: item.numItem ?? '\n', style: 'small', alignment: 'left' },
+      { text: item.cantidad ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.codigo ?? '\n', style: 'small', alignment: 'left' },
+      { text: item.serie ?? '\n', style: 'small', alignment: 'left' },
+      {
+        text: item.descripcion ?? '\n',
+        colSpan: 3,
+        style: 'small',
+        alignment: 'left',
+      },
+      { text: item.precioUni ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.montoDescu ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.ventaNoSuj ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.ventaExenta ?? '\n', style: 'small', alignment: 'right' },
+      { text: item.ventaGravada ?? '\n', style: 'small', alignment: 'right' },
     ];
   });
 };
