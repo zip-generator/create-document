@@ -159,7 +159,6 @@ export const excludeSubject = (body: BodyDto[], resume: Resume) => {
 };
 const mapCCF = (ccf: BodyDto[]): any[][] => {
   return ccf.map((item) => {
-    console.log({ item });
     return [
       { text: item.numItem ?? '\n', style: 'small', alignment: 'left' },
       { text: item.cantidad ?? '\n', style: 'small', alignment: 'left' },

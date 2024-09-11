@@ -9,7 +9,6 @@ export const retencionTable = ({
   resume,
   extension,
 }: PropRetencionTable): ContentTable => {
-  console.log(resume);
   return {
     table: {
       headerRows: 1,

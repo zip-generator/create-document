@@ -2,12 +2,23 @@ import { BodyDto } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 import { PropTable } from '../interfaces';
 
+interface CcfTableProps extends PropTable {
+  copago?: string;
+  coaseguro?: string;
+  coaseguroPercentage?: string;
+  deducible?: string;
+}
+
 export const ccfTable = ({
   body,
   resume,
   nextDay,
   extension,
-}: PropTable): ContentTable => {
+  copago,
+  coaseguro,
+  coaseguroPercentage,
+  deducible,
+}: CcfTableProps): ContentTable => {
   return {
     table: {
       headerRows: 1,
@@ -322,7 +333,7 @@ export const ccfTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${copago ?? '0.00'}\n`,
                         style: 'small',
                       },
                     ],
@@ -337,7 +348,7 @@ export const ccfTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${deducible ?? '0.00'} \n`,
                         style: 'small',
                       },
                     ],
@@ -357,7 +368,7 @@ export const ccfTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${coaseguro ?? '0.00'} \n`,
                         style: 'small',
                       },
                     ],
@@ -372,7 +383,7 @@ export const ccfTable = ({
                         },
                       },
                       {
-                        text: '0.00% \n',
+                        text: `${coaseguroPercentage ?? '0.00'}% \n`,
                         style: 'small',
                       },
                     ],

@@ -2,12 +2,23 @@ import { BodyDto, Tributos } from '@app/dto';
 import { ContentTable } from 'pdfmake/interfaces';
 import { PropTable } from '../interfaces';
 
+interface CreditNoteTableProps extends PropTable {
+  copago?: string;
+  coaseguro?: string;
+  coaseguroPercentage?: string;
+  deducible?: string;
+}
+
 export const creditNoteTable = ({
   body,
   resume,
   nextDay,
   extension,
-}: PropTable): ContentTable => {
+  coaseguro,
+  coaseguroPercentage,
+  copago,
+  deducible,
+}: CreditNoteTableProps): ContentTable => {
   return {
     table: {
       headerRows: 1,
@@ -328,7 +339,7 @@ export const creditNoteTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${copago ?? '0.00'}\n`,
                         style: 'small',
                       },
                     ],
@@ -343,7 +354,7 @@ export const creditNoteTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${deducible ?? '0.00'} \n`,
                         style: 'small',
                       },
                     ],
@@ -363,7 +374,7 @@ export const creditNoteTable = ({
                         },
                       },
                       {
-                        text: '$0.00 \n',
+                        text: `${coaseguro ?? '0.00'} \n`,
                         style: 'small',
                       },
                     ],
@@ -378,7 +389,7 @@ export const creditNoteTable = ({
                         },
                       },
                       {
-                        text: '0.00% \n',
+                        text: `${coaseguroPercentage ?? '0.00'}% \n`,
                         style: 'small',
                       },
                     ],

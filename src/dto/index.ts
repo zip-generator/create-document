@@ -53,6 +53,9 @@ export class ReceptorContentDTO {
   atencionId?: string;
   @IsOptional()
   insuranceCompany?: string;
+  @IsOptional()
+  @IsString()
+  coaseguro: string;
 }
 
 export class HeaderSectionOptionsDTO {
@@ -163,6 +166,21 @@ export class ExtensionDto {
   @IsString()
   noDocumentoRecibe: string;
 }
+
+export class Observaciones {
+  @IsOptional()
+  @IsString()
+  copago: string;
+  @IsOptional()
+  @IsString()
+  coaseguro: string;
+  @IsOptional()
+  @IsString()
+  coaseguroPercentage: string;
+  @IsOptional()
+  @IsString()
+  deducible: string;
+}
 export class DocumentDataDTO {
   @IsNotEmpty()
   receptor: ReceptorContentDTO;
@@ -181,6 +199,8 @@ export class DocumentDataDTO {
 
   @IsNotEmpty()
   extension: ExtensionDto;
+  @IsOptional()
+  observaciones: Observaciones | string;
 }
 
 export class PayloadDto {

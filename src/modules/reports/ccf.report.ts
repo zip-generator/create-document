@@ -6,7 +6,7 @@ import {
   receptorSection,
 } from './sections';
 import { styles } from './styles';
-import { DocumentDataDTO } from '@app/dto';
+import { DocumentDataDTO, Observaciones } from '@app/dto';
 import { generateDataImage } from '@app/utils';
 import { join } from 'path';
 
@@ -20,8 +20,17 @@ export const ccfReport = (
   data: DocumentDataDTO,
   invoiceName: string,
 ): TDocumentDefinitions => {
-  const { header, receptor, body, resume, fechaNextDay, extension } = data;
+  const {
+    header,
+    receptor,
+    body,
+    resume,
+    fechaNextDay,
+    extension,
+    observaciones,
+  } = data;
   const { url, ...rest } = header;
+  const observations = observaciones as Observaciones;
   return {
     header: logo,
     pageMargins: [10, 70],
@@ -32,7 +41,16 @@ export const ccfReport = (
         mhPortal: url,
       }),
       receptorSection(receptor),
-      ccfTable({ body, resume, nextDay: fechaNextDay, extension }),
+      ccfTable({
+        body,
+        resume,
+        nextDay: fechaNextDay,
+        extension,
+        copago: observations?.copago,
+        coaseguro: observations?.coaseguro,
+        coaseguroPercentage: observations?.coaseguroPercentage,
+        deducible: observations?.deducible,
+      }),
     ],
     styles,
   };
